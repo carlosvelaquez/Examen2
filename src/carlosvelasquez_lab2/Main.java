@@ -5,6 +5,7 @@
  */
 package carlosvelasquez_lab2;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -53,6 +54,8 @@ public class Main extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         miModificarSoldado.setText("Modificar Soldado");
         miModificarSoldado.addActionListener(new java.awt.event.ActionListener() {
@@ -63,6 +66,11 @@ public class Main extends javax.swing.JFrame {
         pmArbol.add(miModificarSoldado);
 
         miEliminarSoldado.setText("Eliminar Soldado");
+        miEliminarSoldado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miEliminarSoldadoActionPerformed(evt);
+            }
+        });
         pmArbol.add(miEliminarSoldado);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -106,6 +114,25 @@ public class Main extends javax.swing.JFrame {
 
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton7.setText("DENZEL PEEJA");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Guardar Archivo");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Leer Archivo");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,15 +145,20 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1)
-                            .addComponent(jLabel2)
-                            .addComponent(cbEjercito, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1)
+                                .addComponent(jLabel2)
+                                .addComponent(cbEjercito, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -145,6 +177,10 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6)
                     .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -317,11 +353,30 @@ public class Main extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Soldado modificado exitosamente.");
             }
         }while(continuar == false);
-        
             ej.modificarSoldado(camposNuevos, getNumSoldado());
             refrescarArbol();
         }
     }//GEN-LAST:event_miModificarSoldadoActionPerformed
+
+    private void miEliminarSoldadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miEliminarSoldadoActionPerformed
+        if (getNumSoldado() != "-1") {
+            ej.eliminarSoldado(getNumSoldado());
+            JOptionPane.showMessageDialog(this, "Soldado eliminado exitosamente");
+            refrescarArbol();
+        }
+    }//GEN-LAST:event_miEliminarSoldadoActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        batalla();
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -364,6 +419,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbEjercito;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
@@ -418,15 +475,95 @@ public class Main extends javax.swing.JFrame {
 
     private String getNumSoldado() {
         try {
-            String s = (String) jtSoldados.getLastSelectedPathComponent();
+            String s =  jtSoldados.getLastSelectedPathComponent().toString();
             String[] sa;
-            sa = s.split("");
+            sa = s.split(" ");
             return sa[1];
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Debe seleccionar el número de soldado");
         }
         
         return "-1";
+    }
+    
+    void batalla(){
+        Ejercito ej[] = new Ejercito[3];
+        int contDerrotados;
+        String log = "";
+        
+        for (int i = 0; true; i++) {
+            switch (i){
+                case 0:
+                    ej[0]= rusos;
+                    ej[1] = alemanes;
+                    ej[2] = alumnos;
+                    break;
+                case 1:
+                    ej[0]= alemanes;
+                    ej[1] = rusos;
+                    ej[2] = alumnos;
+                    break;
+                case 2:
+                    ej[0]= alumnos;
+                    ej[1] = rusos;
+                    ej[2] = alemanes;
+                    break;
+            }
+            
+            contDerrotados = 0;
+            
+            for (int j = 1; j <= 2; j++) {
+                if (ej[j].fueDerrotado() == false) {
+                    int sobrecarga = (ej[0].getNum() + 1) - (ej[j].getNum() + 1), sobCont = 1;
+                    ArrayList<String[]> listaSoldados = ej[0].getListaSoldadosAL();
+                    ArrayList<String[]> listaSoldadosEnem = ej[j].getListaSoldadosAL();
+                    int indRes = ej[j].getIndiceResistencia();
+                    int indPod = ej[0].getIndicePoder();
+                    int kUlt = 0;
+
+                    log += ("¡Los " + ej[0].getNombreEjercito() + " están atacando a los " + ej[j].getNombreEjercito() + "!\n");
+
+                    for (int k = 0; k < listaSoldados.size(); k++) {
+                        if (k < listaSoldadosEnem.size()) {
+                            listaSoldadosEnem.get(k)[indRes] = Integer.toString(Integer.parseInt(listaSoldadosEnem.get(k)[indRes]) - Integer.parseInt(listaSoldados.get(k)[indPod]));
+                            kUlt = k;
+                        }else{
+                            if (sobrecarga > 0) {
+                                listaSoldadosEnem.get(kUlt)[indRes] = Integer.toString(Integer.parseInt(listaSoldadosEnem.get(kUlt)[indRes]) - Integer.parseInt(listaSoldados.get(k)[indPod]));
+                            }
+                        }
+                    }
+
+                    ej[j].setListaSoldados(listaSoldadosEnem);
+                    ej[j].removerMuertos();
+                }else
+                    contDerrotados ++;
+            }
+            
+            if (contDerrotados > 1) {
+                log += ("¡Los " + ej[0].getNombreEjercito() + " han ganado!");
+                JOptionPane.showMessageDialog(this, "¡Los " + ej[0].getNombreEjercito() + " han ganado!");
+                break;
+            }
+            
+            if (i == 2) {
+                i = 0;
+            }
+            
+        }
+        Ejercito[] ej2 = new Ejercito[3];
+        
+        ej2[0] = rusos;
+        ej2[1] = alemanes;
+        ej2[2] = alumnos;
+        
+        log += "\n\n";
+        
+        for (int i = 0; i < 3; i++) {
+            log += ej2[i].imprimirMuertos();
+        }
+        
+        JOptionPane.showMessageDialog(this, "BITÁCORA DE GUERRA\n\n" + log);
     }
 
 }

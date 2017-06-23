@@ -130,7 +130,7 @@ public class Ejercito {
         }
     }
     
-    void imprimirMuertos(){
+    String imprimirMuertos(){
         String s = ("Soldados " + nombreEjercito + " caídos en batalla:");
         
         for (int i = 0; i < listaMuertos.size(); i++) {
@@ -139,6 +139,8 @@ public class Ejercito {
             }
             s += (" | ");
         }
+        
+        return s;
         //JOptionPane.showMessageDialog(null, s, s, num, icon);
     }
 
@@ -149,8 +151,14 @@ public class Ejercito {
     
     void modificarSoldado(String[] camposNuevos, String modSelString) {
         int modSel = Integer.parseInt(modSelString);
-        listaSoldadosAL.remove(modSel);
+        listaSoldadosAL.remove(modSel-1);
         listaSoldadosAL.add(camposNuevos);
+    }
+    
+    void eliminarSoldado(String modSelString) {
+        int modSel = Integer.parseInt(modSelString);
+        listaSoldadosAL.remove(modSel-1);
+        num --;
     }
 
     void removerMuertos(int remSel) {
