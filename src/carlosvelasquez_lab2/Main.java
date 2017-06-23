@@ -623,12 +623,14 @@ public class Main extends javax.swing.JFrame {
         
         for (int i = 0; i < 3; i++) {
             log += ej2[i].imprimirMuertos();
+            log += "\n\n";
         }
         
         taBitacora.setText(log);
         
         jdBitacora.pack();
         jdBitacora.setModal(true);
+        jdBitacora.setLocationRelativeTo(this);
         jdBitacora.setVisible(true);
     }
 

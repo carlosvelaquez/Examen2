@@ -134,13 +134,13 @@ public class Ejercito implements Serializable{
     }
     
     String imprimirMuertos(){
-        String s = ("Soldados " + nombreEjercito + " caídos en batalla:");
+        String s = ("Soldados " + nombreEjercito + " caídos en batalla:\n");
         
         for (int i = 0; i < listaMuertos.size(); i++) {
             for (int j = 0; j < listaMuertos.get(i).length; j++) {
                 s += (" | " + listaMuertos.get(i)[j]);
             }
-            s += (" | \n\n");
+            s += (" | \n");
         }
         
         return s;
