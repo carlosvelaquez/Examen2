@@ -5,6 +5,11 @@
  */
 package carlosvelasquez_lab2;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.DefaultComboBoxModel;
@@ -18,7 +23,6 @@ import javax.swing.tree.DefaultTreeModel;
  */
 public class Main extends javax.swing.JFrame {
     
-    static Scanner entrada = new Scanner(System.in);
     static Ejercito rusos = new Ejercito(1);
     static Ejercito alemanes = new Ejercito(2);
     static Ejercito alumnos = new Ejercito(3);
@@ -45,6 +49,11 @@ public class Main extends javax.swing.JFrame {
         pmArbol = new javax.swing.JPopupMenu();
         miModificarSoldado = new javax.swing.JMenuItem();
         miEliminarSoldado = new javax.swing.JMenuItem();
+        jdBitacora = new javax.swing.JDialog();
+        jLabel3 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        taBitacora = new javax.swing.JTextArea();
+        jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         cbEjercito = new javax.swing.JComboBox<>();
@@ -72,6 +81,49 @@ public class Main extends javax.swing.JFrame {
             }
         });
         pmArbol.add(miEliminarSoldado);
+
+        jLabel3.setFont(new java.awt.Font("Calibri Light", 0, 30)); // NOI18N
+        jLabel3.setText("Bitácora de Guerra");
+
+        taBitacora.setEditable(false);
+        taBitacora.setColumns(20);
+        taBitacora.setRows(5);
+        jScrollPane2.setViewportView(taBitacora);
+
+        jButton5.setText("Continuar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jdBitacoraLayout = new javax.swing.GroupLayout(jdBitacora.getContentPane());
+        jdBitacora.getContentPane().setLayout(jdBitacoraLayout);
+        jdBitacoraLayout.setHorizontalGroup(
+            jdBitacoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdBitacoraLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jdBitacoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2)
+                    .addGroup(jdBitacoraLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 150, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jdBitacoraLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton5)))
+                .addContainerGap())
+        );
+        jdBitacoraLayout.setVerticalGroup(
+            jdBitacoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jdBitacoraLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Simulador de Guerra");
@@ -113,21 +165,21 @@ public class Main extends javax.swing.JFrame {
         });
 
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton7.setText("DENZEL PEEJA");
+        jButton7.setText("Simular Batallas");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Guardar Archivo");
+        jButton3.setText("Guardar a Archivos");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Leer Archivo");
+        jButton4.setText("Leer de Archivos");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -367,16 +419,21 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_miEliminarSoldadoActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        guardarTodo();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        leerTodo();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         batalla();
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        jdBitacora.dispose();
+        taBitacora.setText("");
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -421,15 +478,20 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JDialog jdBitacora;
     private javax.swing.JTree jtSoldados;
     private javax.swing.JMenuItem miEliminarSoldado;
     private javax.swing.JMenuItem miModificarSoldado;
     private javax.swing.JPopupMenu pmArbol;
+    private javax.swing.JTextArea taBitacora;
     // End of variables declaration//GEN-END:variables
     
     void refrescarArbol(){
@@ -563,7 +625,84 @@ public class Main extends javax.swing.JFrame {
             log += ej2[i].imprimirMuertos();
         }
         
-        JOptionPane.showMessageDialog(this, "BITÁCORA DE GUERRA\n\n" + log);
+        taBitacora.setText(log);
+        
+        jdBitacora.pack();
+        jdBitacora.setModal(true);
+        jdBitacora.setVisible(true);
+    }
+
+    private void guardarTodo() {
+        try {
+            File f = new File("./rusos.sim");
+            FileOutputStream fos = new FileOutputStream(f);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            
+            oos.writeObject(rusos);
+            oos.flush();
+            oos.close();
+            fos.close();
+            
+            f = new File("./alemanes.sim");
+            fos = new FileOutputStream(f);
+            oos = new ObjectOutputStream(fos);
+            
+            oos.writeObject(alemanes);
+            oos.flush();
+            oos.close();
+            fos.close();
+            
+            f = new File("./alumnos.sim");
+            fos = new FileOutputStream(f);
+            oos = new ObjectOutputStream(fos);
+            
+            oos.writeObject(alumnos);
+            oos.flush();
+            oos.close();
+            fos.close();
+            
+            JOptionPane.showMessageDialog(this, "Archivos guardados exitosamente");
+            ej = rusos;
+            refrescarArbol();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al guardar a archivos", "Error", 0);
+        }
+    }
+
+    private void leerTodo() {
+        try {
+            File f = new File("./rusos.sim");
+            FileInputStream fos = new FileInputStream(f);
+            ObjectInputStream oos = new ObjectInputStream(fos);
+            
+            rusos = (Ejercito) oos.readObject();
+            oos.close();
+            fos.close();
+            
+            f = new File("./alemanes.sim");
+            fos = new FileInputStream(f);
+            oos = new ObjectInputStream(fos);
+            
+            alemanes = (Ejercito) oos.readObject();
+            oos.close();
+            fos.close();
+            
+            f = new File("./alumnos.sim");
+            fos = new FileInputStream(f);
+            oos = new ObjectInputStream(fos);
+            
+            alumnos = (Ejercito) oos.readObject();
+            oos.close();
+            fos.close();
+            
+            JOptionPane.showMessageDialog(this, "Archivos leidos exitosamente");
+            ej = rusos;
+            refrescarArbol();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al leer de archivos", "Error", 0);
+        }
     }
 
 }

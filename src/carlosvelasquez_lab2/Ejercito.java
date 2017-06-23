@@ -1,10 +1,13 @@
 package carlosvelasquez_lab2;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 
-public class Ejercito {
+public class Ejercito implements Serializable{
+    static final long SerialVersionUID = 777L;
+    
     String nombreEjercito;
     String[] campos, armas;
     String[][] listaSoldados;
@@ -137,7 +140,7 @@ public class Ejercito {
             for (int j = 0; j < listaMuertos.get(i).length; j++) {
                 s += (" | " + listaMuertos.get(i)[j]);
             }
-            s += (" | ");
+            s += (" | \n\n");
         }
         
         return s;
