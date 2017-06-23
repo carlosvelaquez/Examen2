@@ -2,24 +2,41 @@ package carlosvelasquez_lab2;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class CarlosVelasquez_Lab2 {
-    static Scanner entrada = new Scanner(System.in);
-    static Ejercito rusos = new Ejercito(1);
-    static Ejercito alemanes = new Ejercito(2);
-    static Ejercito alumnos = new Ejercito(3);
+    
+    
 
     public static void main(String[] args) {
         System.out.println("Laboratorio 2 - Carlos Velásquez");
         
-        do {
+        String m = ("En un intento por formatear una computadora,\n"
+                + "los alumnos de programación II han desembocado una serie \n"
+                + "de eventos sobrenaturales "
+                + "que de alguna forma los llevaron a\n"
+                + "trás en el tiempo a los últimos meses de 1942 en\n"
+                + "Rusia en donde se disputaba la famosa “Batalla de Stalingrado”.\n\n" +
+"Ahora los 3 ejércitos pelearán arduamente entre ellos\n"
+                + "por el control de la ciudad soviética de Stalingrado.");
+        
+        String m2 = "Este es el menú de preparación, donde podrá indicar a cada ejercito\n"
+                + "la forma en la que se enfrentarán a los otros.";
+        
+        JOptionPane.showMessageDialog(null, m);
+        JOptionPane.showMessageDialog(null, m2);
+        
+        //do {
             menu();
-        } while (true);
+        //} while (true);
         
     }
     
     static void menu(){
-        System.out.println("-   -   -   -   -   -   -   -   -   -   -   -   -");
+        
+        Main.main(new String[1]);
+        
+        /*System.out.println("-   -   -   -   -   -   -   -   -   -   -   -   -");
         System.out.println("[1] Comenzar Programa");
         System.out.println("[2] Salir");
         System.out.println("");
@@ -38,24 +55,13 @@ public class CarlosVelasquez_Lab2 {
                 System.out.println("Numero inválido, por favor intente de nuevo.");
                 break;
         }
-        
+        */
     }
     
-    static void intro(){
-        System.out.printf("En un intento por formatear una computadora,\n"
-                + "los alumnos de programación II han desembocado una serie \n"
-                + "de eventos sobrenaturales"
-                + "que de alguna forma los llevarona\n"
-                + "trás en el tiempo a los últimos meses de 1942 en\n"
-                + "Rusia en donde se disputaba la famosa “Batalla de Stalingrado”.\n\n" +
-"Ahora los 3 ejércitos pelearán arduamente entre ellos por el control de la ciudad soviética de Stalingrado.");
-        System.out.println("\n\n");
-        System.out.println("Este es el menú de preparación, donde podrá indicar a cada ejercito\n"
-                + "la forma en la que se enfrentarán a los otros.");
-        
+    /*static void intro(){
         Ejercito ej = rusos;
         preparacion(ej);
-    }
+    }*/
     
     static void preparacion(Ejercito ej){
         boolean rep;

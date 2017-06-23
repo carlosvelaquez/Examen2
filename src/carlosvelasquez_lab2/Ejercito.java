@@ -1,6 +1,7 @@
 package carlosvelasquez_lab2;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 
 public class Ejercito {
@@ -9,7 +10,7 @@ public class Ejercito {
     String[][] listaSoldados;
     int indiceEdad, indiceResistencia, indiceArma, edadMin, num = 0, indicePoder;
     int[] armasPoder;
-    ArrayList<String[]> listaSoldadosAL = new ArrayList<String[]>(), listaMuertos = new ArrayList<String[]>();
+    ArrayList<String[]> listaSoldadosAL = new ArrayList(), listaMuertos = new ArrayList<String[]>();
     
     public Ejercito(int tipo){
         switch (tipo){
@@ -69,7 +70,7 @@ public class Ejercito {
     
     void nuevoSoldado(String[] infoSoldado){
         listaSoldadosAL.add(infoSoldado);
-        num = listaSoldadosAL.size()-1;
+        num ++;
     }
     
     int getEdadMin(){
@@ -130,24 +131,36 @@ public class Ejercito {
     }
     
     void imprimirMuertos(){
-        System.out.println("Soldados " + nombreEjercito + " caídos en batalla:");
+        String s = ("Soldados " + nombreEjercito + " caídos en batalla:");
         
         for (int i = 0; i < listaMuertos.size(); i++) {
             for (int j = 0; j < listaMuertos.get(i).length; j++) {
-                System.out.print(" | " + listaMuertos.get(i)[j]);
+                s += (" | " + listaMuertos.get(i)[j]);
             }
-            System.out.println(" | ");
+            s += (" | ");
         }
-        System.out.println("\n");
+        //JOptionPane.showMessageDialog(null, s, s, num, icon);
     }
 
     void modificarSoldado(String[] camposNuevos, int modSel) {
         listaSoldadosAL.remove(modSel);
         listaSoldadosAL.add(camposNuevos);
-        num = listaSoldadosAL.size()-1;
+    }
+    
+    void modificarSoldado(String[] camposNuevos, String modSelString) {
+        int modSel = Integer.parseInt(modSelString);
+        listaSoldadosAL.remove(modSel);
+        listaSoldadosAL.add(camposNuevos);
     }
 
     void removerMuertos(int remSel) {
         listaSoldadosAL.remove(remSel-1);
     }
+
+    @Override
+    public String toString() {
+        return nombreEjercito;
+    }
+    
+    
 }
